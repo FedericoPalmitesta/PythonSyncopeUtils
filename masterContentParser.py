@@ -1,4 +1,5 @@
 import re
+import sys
 
 
 def parse_string(string):
@@ -76,12 +77,21 @@ dictionary = {'IDP_ID': 'idp_id', 'PERFORMUPDATE': 'performUpdate', 'DERSCHEMA':
                   'SYNCOPEROLE_DYNREALM': 'SyncopeRole_dynRealm', 'DYNAMICREALM_ID': 'dynamicRealm_id',
                   'CSVTEMPLATE': 'csvTemplate'}
 
-old_file = input("Provide the path of the source MasterContent (/path/MasterContent.xml): ")
-new_file = input("Provide the path of the destination file (/path/file.xml): ")
-with open(old_file) as oldfile, open(new_file, 'w') as newfile:
-    for line in oldfile:
-        for word in parse_string(line).split():
-            line = line.replace(word, dictionary.get(word, word), 1)
-        newfile.write(line)
-
-print("Parsing succeeded")
+if sys.argv[1] == "--help":
+    print("Provide two parameters: the path to the MasterContent.xml to be parsed and a path to the output file")
+elif len(sys.argv) < 2:
+    print("Error: no arguments have been provided. Use --help for usage")
+else:
+    try:
+        old_file = sys.argv[1]
+        with open(old_file) as oldfile:
+            new_file = sys.argv[2]
+            with open(new_file, 'w') as newfile:
+                for line in oldfile:
+                    for word in parse_string(line).split():
+                        line = line.replace(word, dictionary.get(word, word), 1)
+                    newfile.write(line)
+        print("parsing succeded")
+    except FileNotFoundError:
+        print("the input file has not been found")
+    
