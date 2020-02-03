@@ -73,8 +73,7 @@ dictionary = {'IDP_ID': 'idp_id', 'PERFORMUPDATE': 'performUpdate', 'DERSCHEMA':
                   'SELFASRECIPIENT': 'selfAsRecipient', 'TRACELEVEL': 'traceLevel', 'MAPPING_ID': 'mapping_id',
                   'REPORTLETCONFINSTANCE': 'ReportletConfInstance', 'SERIALIZEDINSTANCE': 'serializedInstance',
                   'REPORTTEMPLATE': 'ReportTemplate', 'REPORTREPORTLET': 'ReportReportlet', 'FOTEMPLATE': 'foTemplate',
-                  'SYNCOPEROLE_DYNREALM': 'SyncopeRole_dynRealm', 'DYNAMICREALM_ID': 'dynamicRealm_id',
-                  }
+                  'SYNCOPEROLE_DYNREALM': 'SyncopeRole_dynRealm', 'DYNAMICREALM_ID': 'dynamicRealm_id'}
 
 old_file = input("Provide the path of the source MasterContent (/path/MasterContent.xml): ")
 new_file = input("Provide the path of the destination file (/path/file.xml): ")
