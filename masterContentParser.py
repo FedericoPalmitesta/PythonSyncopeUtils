@@ -1,4 +1,5 @@
 import re
+import json
 
 
 def parse_string(string):
@@ -75,6 +76,11 @@ dictionary = {'IDP_ID': 'idp_id', 'PERFORMUPDATE': 'performUpdate', 'DERSCHEMA':
                   'REPORTTEMPLATE': 'ReportTemplate', 'REPORTREPORTLET': 'ReportReportlet', 'FOTEMPLATE': 'foTemplate',
                   'SYNCOPEROLE_DYNREALM': 'SyncopeRole_dynRealm', 'DYNAMICREALM_ID': 'dynamicRealm_id',
                   'CSVTEMPLATE': 'csvTemplate'}
+dictionary = {}
+
+with open("dict.json") as json_file:
+    dictionary = json.load(json_file)
+
 
 old_file = input("Provide the path of the source MasterContent (/path/MasterContent.xml): ")
 new_file = input("Provide the path of the destination file (/path/file.xml): ")
