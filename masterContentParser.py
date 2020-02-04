@@ -2,12 +2,9 @@ import re, sys, json
 
 
 def parse_string(string):
-    string = string.replace("<", '')
-    string = string.replace(">", '')
-    string = string.replace("=", '')
-    string = string.replace("/", '')
     string = re.sub(r'\".?\"', '', string)
-    return re.sub(r'\".+?\"', '', string)
+    string = re.sub(r'\".+?\"', '', string)
+    return re.sub(r'(\"|\(|\[|\{|\)|\]|\}|<|>|=|/)', '', string)
 
 
 dictionary = {}
