@@ -9,14 +9,14 @@ def parse_string(string):
 
 dictionary = {}
 
-with open("dict.json") as json_file:
+with open('dict.json') as json_file:
     dictionary = json.load(json_file)
 
 
-if sys.argv[1] == "--help":
-    print("Provide two parameters: the path to the MasterContent.xml to be parsed and a path to the output file")
+if sys.argv[1] == '--help':
+    print('Provide two parameters: the path to the MasterContent.xml to be parsed and a path to the output file')
 elif len(sys.argv) < 2:
-    print("Error: no arguments have been provided. Use --help for usage")
+    print('Error: no arguments have been provided. Use --help for usage')
 else:
     try:
         old_file = sys.argv[1]
@@ -26,6 +26,6 @@ else:
                 for word in parse_string(line).split():
                     line = line.replace(word, dictionary.get(word, word), 1)
                 newfile.write(line)
-        print("parsing succeeded")
+        print('Parsing succeeded')
     except FileNotFoundError:
-        print("the input file has not been found")
+        print('The input file has not been found')
